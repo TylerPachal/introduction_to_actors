@@ -8,7 +8,10 @@ defmodule Sushi.Application do
       {Sushi.Cashier, %{}}
     ]
 
-    opts = [strategy: :one_for_one, name: Sushi.Supervisor]
+    # Using :rest_for_one, because if the ComputerSystem dies,
+    # we need the chefs to also restart, so they can subscribe
+    # to the new ComputerSystem
+    opts = [strategy: :rest_for_one, name: Sushi.Supervisor]
     Supervisor.start_link(children, opts)
   end
 end

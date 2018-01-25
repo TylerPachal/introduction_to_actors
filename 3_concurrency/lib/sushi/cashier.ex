@@ -35,7 +35,7 @@ defmodule Sushi.Cashier do
   def handle_cast({:order, name, count}, state) do
     Logger.info("[#{__MODULE__}] #{inspect self()} Received online order from #{inspect name}")
 
-    # Tell the chef manager about the next order
+    # Tell the system about the next order
     GenServer.cast(Sushi.ComputerSystem, {:triage, name, count})
 
     # Update our collection of inflight orders
@@ -45,7 +45,7 @@ defmodule Sushi.Cashier do
     {:noreply, updated_state}
   end
 
-  # Chef notifying us and order is done
+  # ComputerSystem notifying us and order is done
   def handle_cast({:done, name, rolls}, state) do
     Logger.info("[#{__MODULE__}] #{inspect self()} Received message from the manager that food is ready for #{inspect name}")
 

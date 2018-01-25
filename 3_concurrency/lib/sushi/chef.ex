@@ -10,12 +10,14 @@ defmodule Sushi.Chef do
 
   def init(_ags) do
     Logger.info("[#{__MODULE__}] #{inspect self()} Starting")
+
+    # Clockin with the ComputerSystem, so it knows we are availble to handle orders
     GenServer.call(Sushi.ComputerSystem, :chef_clock_in)
     {:ok, :ok}
   end
 
   def handle_cast({:細巻き, name, count}, state) do
-    IO.puts("#{__MODULE__} #{inspect self()} Making #{count} rolls for #{inspect name}")
+    Logger.info("#{__MODULE__} #{inspect self()} Making #{count} rolls for #{inspect name}")
 
     # Prepare each roll
     rolls = make_rolls(count, [])
