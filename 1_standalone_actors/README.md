@@ -1,21 +1,13 @@
-# Sushi
+# 1) Standalone Actors
 
-**TODO: Add description**
+This is the first example that shows how to create basic actors.
+The actors are tested in [sushi.ex](lib/sushi.ex), which can be
+ran by opening up `iex` and calling the `test()` function:
 
-## Installation
-
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `sushi` to your list of dependencies in `mix.exs`:
-
-```elixir
-def deps do
-  [
-    {:sushi, "~> 0.1.0"}
-  ]
-end
 ```
+# Enter iex
+$ iex -S mix
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/sushi](https://hexdocs.pm/sushi).
-
+# Call test function
+iex(1)> Sushi.test()
+```
